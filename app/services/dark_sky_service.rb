@@ -8,11 +8,11 @@ class DarkSkyService
   end
 
   def find_lat
-    service_coords["results"]["geometry"]["location"]["lat"].to_i
+    service_coords["lat"].to_i
   end
 
   def find_long
-    service_coords["results"]["geometry"]["location"]["lng"].to_i
+    service_coords["lng"].to_i
   end
 
   def weather_data
