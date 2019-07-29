@@ -3,16 +3,17 @@ module Api
     class MunchiesController < ApplicationController
 
       def index
-        # binding.pry
         render json: MunchiesSerializer.new(Munchies.new(request_params))
       end
 
+      private
+
+      def request_params
+        params.permit(:start, :end, :food)
+      end
     end
   end
 
-  private
-
-  
 end
 
 # params start end food
