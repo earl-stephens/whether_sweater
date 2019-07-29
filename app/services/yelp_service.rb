@@ -8,19 +8,20 @@ class YelpService
 
   def get_time(start, ending)
     geocode = GoogleGeocodeService.new
-    geocode.get_time(start, ending)
+    future_time = geocode.get_time(start, ending)
+    predicted_time = Time.now.to_i + future_time
   end
 
   def diner_data
-    # get_time(@start, @ending)
+    timer = get_time(@start, @ending)
+    # binding.pry
     conn = Faraday.new("https://api.yelp.com") do |f|
       f.headers['Authorization'] = "Bearer #{ENV['YELP_KEY']}"
       f.adapter Faraday.default_adapter
     end
-    response = conn.get("/v3/businesses/search?term=#{@food}&latitude=#{grab_lat}&longitude=#{grab_long}")
+    response = conn.get("/v3/businesses/search?term=#{@food}&latitude=#{grab_lat}&longitude=#{grab_long}&open_at=#{timer}")
     results = JSON.parse(response.body, symbolize_names: true)
-    # binding.pry
-    
+    results.limit(3)
   end
 
 
