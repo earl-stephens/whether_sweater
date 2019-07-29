@@ -1,5 +1,5 @@
 class MunchiesSerializer
   include FastJsonapi::ObjectSerializer
 
-  attributes :
+  attributes :restaurant_data
 end
