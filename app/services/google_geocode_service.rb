@@ -20,4 +20,12 @@ class GoogleGeocodeService
     second_format = first_format.gsub(' ', '+')
   end
 
+  def get_time(start, ending)
+    starting_location = format_address(start)
+    ending_location = format_address(ending)
+    response = conn.get("/maps/api/directions/json?origin=#{starting_location}&destination=#{ending_location}&key=#{ENV['GOOGLE_API_KEY']}")
+    results = JSON.parse(response.body, symbolize_names: true)
+    binding.pry
+  end
+
 end

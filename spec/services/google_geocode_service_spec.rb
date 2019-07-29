@@ -20,4 +20,12 @@ describe 'google geocode service' do
     expected = 'New+Orleans+LA'
     expect(geocode.format_address(location)).to eq(expected)
   end
+
+  it 'can get time to a destination' do
+    start = 'denver,co'
+    ending = 'pueblo,co'
+    geocode = GoogleGeocodeService.new
+
+    expect(geocode.get_time(start, ending)).to have_key("text")
+  end
 end
