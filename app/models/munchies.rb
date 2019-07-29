@@ -11,8 +11,8 @@ class Munchies
   end
 
   def restaurant_data
-    yelp_service = YelpService.new
-    yelp_service.diner_data(@start, @end, @food)
+    yelp_service = YelpService.new(@start, @end, @food)
+    yelp_service.diner_data
   end
 
 end
