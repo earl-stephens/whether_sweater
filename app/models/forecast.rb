@@ -32,23 +32,27 @@ class Forecast
   end
 
   def hourly
-    {
-      "time" => service_data[:hourly][:time],
-      "summary" => service_data[:hourly][:summary],
-      "icon" => service_data[:hourly][:icon],
-      "temperature" => service_data[:hourly][:temperature]
-    }
+    service_data[:hourly][:data].map do |datum|
+      {
+        "time" => datum[:time],
+        "summary" => datum[:summary],
+        "icon" => datum[:icon],
+        "temperature" => datum[:temperature]
+      }
+    end
   end
-
+ 
   def daily
-    {
-      "icon" => service_data[:daily][:icon],
-      "percent_precip" => service_data[:daily][:precipProbability],
-      "precip_type" => service_data[:daily][:precipType],
-      "hi_temp" => service_data[:daily][:temperatureHigh],
-      "lo_temp" => service_data[:daily][:temperatureLow],
-      "time" => service_data[:daily][:time]
-    }
+    service_data[:daily][:data].map do |datum|
+      {
+        "icon" => datum[:icon],
+        "percent_precip" => datum[:precipProbability],
+        "precip_type" => datum[:precipType],
+        "hi_temp" => datum[:temperatureHigh],
+        "lo_temp" => datum[:temperatureLow],
+        "time" => datum[:time]
+      }
+    end
   end
 
   private
