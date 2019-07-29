@@ -15,12 +15,12 @@ RSpec.describe 'forecast', type: :request do
     expect(results["data"]["attributes"]["current"]).to have_key("summary")
     expect(results["data"]["attributes"]["current"]).to have_key("humidity")
     expect(results["data"]["attributes"]).to have_key("hourly")
-    expect(results["data"]["attributes"]["hourly"]).to have_key("icon")
-    expect(results["data"]["attributes"]["hourly"]).to have_key("temperature")
-    expect(results["data"]["attributes"]["hourly"]).to have_key("summary")
+    expect(results["data"]["attributes"]["hourly"][0]).to have_key("icon")
+    expect(results["data"]["attributes"]["hourly"][1]).to have_key("temperature")
+    expect(results["data"]["attributes"]["hourly"][2]).to have_key("summary")
     expect(results["data"]["attributes"]).to have_key("daily")
-    expect(results["data"]["attributes"]["daily"]).to have_key("percent_precip")
-    expect(results["data"]["attributes"]["daily"]).to have_key("precip_type")
-    expect(results["data"]["attributes"]["daily"]).to have_key("hi_temp")
+    expect(results["data"]["attributes"]["daily"][0]).to have_key("percent_precip")
+    expect(results["data"]["attributes"]["daily"][1]).to have_key("precip_type")
+    expect(results["data"]["attributes"]["daily"][2]).to have_key("hi_temp")
   end
 end
