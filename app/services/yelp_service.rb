@@ -19,15 +19,19 @@ class YelpService
     end
     response = conn.get("/v3/businesses/search?term=#{@food}&latitude=#{grab_lat}&longitude=#{grab_long}")
     results = JSON.parse(response.body, symbolize_names: true)
-    binding.pry
+    # binding.pry
+    
   end
 
+
+
   def grab_lat
-    service_coords["lat"].to_i
+    # binding.pry
+    service_coords[:results][0][:geometry][:location][:lat]
   end
 
   def grab_long
-    service_coords["lng"].to_i
+    service_coords[:results][0][:geometry][:location][:lng]
   end
 
   private
