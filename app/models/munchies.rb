@@ -12,7 +12,8 @@ class Munchies
 
   def restaurant_data
     yelp_service = YelpService.new(@start, @end, @food)
-    yelp_service.diner_data
+    # binding.pry
+    yelp_service.diner_data[:businesses][0]
   end
 
 end

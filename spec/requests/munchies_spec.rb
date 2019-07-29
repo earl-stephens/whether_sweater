@@ -30,10 +30,11 @@ describe 'user can find open restaurants', type: :request do
     get '/api/v1/munchies?start=denver,co&end=pueblo,co&food=chinese'
 
     results = JSON.parse(response.body)
+    # binding.pry
     expect(response).to be_successful
     expect(results).to be_a Hash
-    expect(results[:data].count).to eq(3)
-    expect(results[:data][0]).to have_key('name')
-    expect(results[:data][0]).to have_key('address')
+    expect(results["data"].count).to eq(3)
+    expect(results["data"]["attributes"]["restaurant_data"]).to have_key('name')
+    expect(results["data"]["attributes"]["restaurant_data"]).to have_key('location')
   end
 end

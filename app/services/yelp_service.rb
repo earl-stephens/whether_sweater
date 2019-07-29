@@ -21,7 +21,7 @@ class YelpService
     end
     response = conn.get("/v3/businesses/search?term=#{@food}&latitude=#{grab_lat}&longitude=#{grab_long}&open_at=#{timer}")
     results = JSON.parse(response.body, symbolize_names: true)
-    results.limit(3)
+    
   end
 
 
