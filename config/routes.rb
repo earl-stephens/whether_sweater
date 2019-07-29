@@ -5,4 +5,5 @@ Rails.application.routes.draw do
   # http://guides.rubyonrails.org/routing.html
   get '/api/v1/forecast', to: 'api/v1/forecast#index'
   get '/api/v1/backgrounds', to: 'api/v1/backgrounds#index'
+  post '/api/v1/users', to: 'api/v1/users#create'
 end
