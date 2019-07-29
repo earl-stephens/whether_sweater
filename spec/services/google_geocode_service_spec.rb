@@ -26,6 +26,6 @@ describe 'google geocode service' do
     ending = 'pueblo,co'
     geocode = GoogleGeocodeService.new
 
-    expect(geocode.get_time(start, ending)).to have_key("text")
+    expect(geocode.get_time(start, ending)).to have_key("value")
   end
 end

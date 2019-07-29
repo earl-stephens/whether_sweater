@@ -25,7 +25,7 @@ class GoogleGeocodeService
     ending_location = format_address(ending)
     response = conn.get("/maps/api/directions/json?origin=#{starting_location}&destination=#{ending_location}&key=#{ENV['GOOGLE_API_KEY']}")
     results = JSON.parse(response.body, symbolize_names: true)
-    binding.pry
+    results[:routes][0][:legs][0][:duration][:value]
   end
 
 end
