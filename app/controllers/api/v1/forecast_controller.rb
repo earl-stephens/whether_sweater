@@ -6,7 +6,7 @@ module Api
     class ForecastController < ApplicationController
 
       def index
-        render json: ForecastSerializer.new(params[:location]).weather_data
+        render json: ForecastSerializer.new(Forecast.new(params[:location]))
       end
 
     end

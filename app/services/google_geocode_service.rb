@@ -13,7 +13,6 @@ class GoogleGeocodeService
     formatted_address = format_address(location)
     response = conn.get("/maps/api/geocode/json?key=#{ENV['GOOGLE_API_KEY']}&address=#{formatted_address}")
     JSON.parse(response.body, symbolize_names: true)
-    # binding.pry
   end
 
   def format_address(location)
