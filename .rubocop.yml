@@ -5,3 +5,7 @@ AllCops:
     - 'spec/**/*.rb'
     - config/environments/*.rb
     - bin/*
+Style/StringLiterals:
+  Enabled: false
+Naming/MemoizedInstanceVariableName:
+  Enabled: false

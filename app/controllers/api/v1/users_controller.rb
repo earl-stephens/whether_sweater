@@ -11,7 +11,8 @@ module Api
         if user.save
           user.update(api_key: generate_api_key)
           render json: UserSerializer.new(
-            User.find_by(email: user_params[:email])), status: 201
+            User.find_by(email: user_params[:email])
+          ), status: 201
         else
           render json: { 'status': 'Not Found', 'status_code': 404 }
         end
@@ -26,7 +27,6 @@ module Api
       def generate_api_key
         SecureRandom.base64(28)
       end
-
     end
   end
 end
