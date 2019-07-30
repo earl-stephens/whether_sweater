@@ -12,7 +12,7 @@ module Api
           user.update(api_key: generate_api_key)
           render json: UserSerializer.new(User.find_by(email: user_params[:email])), status: 201
         else
-          render file: './public/404'
+          render file: '/public/404'
         end
       end
 

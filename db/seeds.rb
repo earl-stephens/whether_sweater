@@ -10,3 +10,6 @@
 #   movies = Movie.create([{ name: 'Star Wars' },
 # { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+user1 = User.create!(email: 'john@example.com', password: 'password', api_key: 'this_is_my_api_key')
+user2 = User.create!(email: 'jack@example.com', password: 'password', api_key: 'this_is_another_api_key')
+user3 = User.create!(email: 'jeff@example.com', password: 'password', api_key: 'this_is_my_third_api_key')
