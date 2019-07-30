@@ -15,6 +15,12 @@ class GoogleGeocodeService
     JSON.parse(response.body, symbolize_names: true)
   end
 
+  def get_time(start, ending)
+    response = conn.get("/maps/api/directions/json?origin=#{start}&destination=#{ending}&key=#{ENV['GOOGLE_API_KEY']}")
+    results = JSON.parse(response.body, symbolize_names: true)
+    time = results[:routes][0][:legs][0][:duration][:value]
+  end
+
   def format_address(location)
     first_format = location.gsub(',', '+')
     second_format = first_format.gsub(' ', '+')
