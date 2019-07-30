@@ -2,9 +2,8 @@
 
 # pixabay service class
 class PixabayService
-
   def conn
-    Faraday.new("https://pixabay.com") do |f|
+    Faraday.new('https://pixabay.com') do |f|
       f.adapter Faraday.default_adapter
     end
   end
@@ -17,7 +16,6 @@ class PixabayService
 
   def edited_location(location)
     remove_state = location.split(',')
-    city_only = remove_state[0].gsub(' ', '+')
+    remove_state[0].gsub(' ', '+')
   end
-
 end

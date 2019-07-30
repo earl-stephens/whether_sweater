@@ -2,8 +2,7 @@
 
 # road trip poro class
 class RoadTrip
-  attr_reader :predicted,
-              :id
+  attr_reader :id
 
   def initialize(start, ending)
     @start = start
@@ -16,9 +15,8 @@ class RoadTrip
     geocode = GoogleGeocodeService.new
     time = geocode.get_time(@start, @ending)
     arrival_time = (time / 3600.0).round
-    {"temperature" => hourly_data[arrival_time]["temperature"],
-    "summary" => hourly_data[arrival_time]["summary"],
-    "travel_time" => arrival_time}
+    { "temperature" => hourly_data[arrival_time]["temperature"],
+      "summary" => hourly_data[arrival_time]["summary"],
+      "travel_time" => arrival_time }
   end
-
 end

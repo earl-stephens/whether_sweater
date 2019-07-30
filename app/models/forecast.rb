@@ -41,7 +41,7 @@ class Forecast
       }
     end
   end
- 
+
   def daily
     service_data[:daily][:data].map do |datum|
       {
@@ -64,5 +64,4 @@ class Forecast
   def service_data
     @_service_data ||= service.weather_data
   end
-
 end
