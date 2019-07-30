@@ -1,0 +1,7 @@
+AllCops:
+  Exclude:
+    - db/*
+    - db/migrate/*.rb
+    - 'spec/**/*.rb'
+    - config/environments/*.rb
+    - bin/*

@@ -9,9 +9,10 @@ module Api
       def create
         user = User.find_by(email: params[:email])
         if user && user.authenticate(params[:password])
-          render json: UserSerializer.new(User.find_by(email: params[:email])), status: 200
+          render json: UserSerializer.new(
+            User.find_by(email: params[:email])), status: 200
         else
-          render file: '/public/404'
+          render json: { 'status': 'Not Found', 'status_code': 404 }
         end
       end
 

@@ -10,9 +10,10 @@ module Api
         user = User.new(user_params)
         if user.save
           user.update(api_key: generate_api_key)
-          render json: UserSerializer.new(User.find_by(email: user_params[:email])), status: 201
+          render json: UserSerializer.new(
+            User.find_by(email: user_params[:email])), status: 201
         else
-          render file: '/public/404'
+          render json: { 'status': 'Not Found', 'status_code': 404 }
         end
       end
 

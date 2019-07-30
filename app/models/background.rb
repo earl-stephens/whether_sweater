@@ -25,5 +25,4 @@ class Background
   def service_data
     @_service_data ||= service.city_image(@location)
   end
-
 end

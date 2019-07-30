@@ -8,7 +8,10 @@ module Api
       def index
         user = User.find_by(api_key: params[:api_key])
         if user
-          render json: RoadTripSerializer.new(RoadTrip.new(params[:origin], params[:destination]))
+          render json: RoadTripSerializer.new(
+            RoadTrip.new(params[:origin], params[:destination]))
+        else
+          render json: { "status": 'Unauthorized', "status_code": 401 }
         end
       end
 
