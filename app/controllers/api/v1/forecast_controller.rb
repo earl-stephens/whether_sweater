@@ -7,7 +7,6 @@ module Api
       def index
         render json: ForecastSerializer.new(Forecast.new(params[:location]))
       end
-
     end
   end
 end

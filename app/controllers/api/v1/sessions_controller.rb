@@ -10,12 +10,12 @@ module Api
         user = User.find_by(email: params[:email])
         if user && user.authenticate(params[:password])
           render json: UserSerializer.new(
-            User.find_by(email: params[:email])), status: 200
+            User.find_by(email: params[:email])
+          ), status: 200
         else
           render json: { 'status': 'Not Found', 'status_code': 404 }
         end
       end
-
     end
   end
 end
