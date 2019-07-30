@@ -23,9 +23,11 @@ class DarkSkyService
   def weather_data
     lat = find_lat
     long = find_long
-    response = conn.get('/forecast/'\
-      "#{ENV['DARKSKY_KEY']}/#{lat},#{long}")
-    JSON.parse(response.body, symbolize_names: true)
+    Rails.cache.fetch("#{lat},#{long}", :expires_in => 15.minutes) do
+      response = conn.get('/forecast/'\
+        "#{ENV['DARKSKY_KEY']}/#{lat},#{long}")
+      JSON.parse(response.body, symbolize_names: true)
+    end
   end
 
   private
