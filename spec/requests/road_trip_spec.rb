@@ -8,7 +8,6 @@ describe 'user can post cities for a road trip' do
     post '/api/v1/road_trip', :params => body
 
     results = JSON.parse(response.body)
-    binding.pry
 
     expect(response).to be_successful
     expect(results["data"]["attributes"]["predicted"]).to have_key("temperature")
