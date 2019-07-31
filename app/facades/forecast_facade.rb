@@ -2,7 +2,6 @@
 
 # facade for forecasts
 class ForecastFacade
-
   def initialize(location)
     @location = location
   end
@@ -55,5 +54,4 @@ class ForecastFacade
   def service_data
     @_service_data ||= service.weather_data
   end
-
 end

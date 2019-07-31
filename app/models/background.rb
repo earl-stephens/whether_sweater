@@ -21,5 +21,4 @@ class Background
   def background_facade
     BackgroundFacade.new(@location)
   end
-
 end
