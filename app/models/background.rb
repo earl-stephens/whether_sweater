@@ -8,21 +8,18 @@ class Background
 
   def initialize(location)
     @location = location
-    @image_url = grab_image_url
+    @image_url = image_url
     @id = location
   end
 
-  def grab_image_url
-    service_data[:hits][0][:largeImageURL]
+  def image_url
+    background_facade.grab_image_url
   end
 
   private
 
-  def service
-    @_service ||= PixabayService.new
+  def background_facade
+    BackgroundFacade.new(@location)
   end
 
-  def service_data
-    @_service_data ||= service.city_image(@location)
-  end
 end

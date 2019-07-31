@@ -5,18 +5,18 @@ class RoadTrip
   attr_reader :id
 
   def initialize(start, ending)
+    @id = ending
     @start = start
     @ending = ending
   end
 
   def predicted
-    forecast = Forecast.new(@ending)
-    hourly_data = forecast.hourly
-    geocode = GoogleGeocodeService.new
-    time = geocode.get_time(@start, @ending)
-    arrival_time = (time / 3600.0).round
-    { "temperature" => hourly_data[arrival_time]["temperature"],
-      "summary" => hourly_data[arrival_time]["summary"],
-      "travel_time" => arrival_time }
+    road_trip_facade.predicted_forecast
+  end
+
+  private
+
+  def road_trip_facade
+    RoadTripFacade.new(@start, @ending)
   end
 end
