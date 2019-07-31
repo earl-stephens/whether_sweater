@@ -43,6 +43,22 @@ Shoulda::Matchers.configure do |config|
   end
 end
 
+require 'rspec/rails'
+require 'vcr'
+require 'webmock/rspec'
+
+VCR.configure do |config|
+  # config.ignore_localhost = true
+  config.cassette_library_dir = 'spec/cassettes'
+  config.hook_into :webmock
+  # config.configure_rspec_metadata!
+  config.filter_sensitive_data('<GOOGLE_API_KEY>') { ENV['GOOGLE_API_KEY'] }
+  config.filter_sensitive_data('<DARKSKY_KEY>') { ENV['DARKSKY_KEY'] }
+  config.filter_sensitive_data('<PIXABAY_KEY>') { ENV['PIXABAY_KEY'] }
+  config.filter_sensitive_data('<YELP_KEY>') { ENV['YELP_KEY'] }
+  config.allow_http_connections_when_no_cassette = true
+end
+
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"

@@ -51,6 +51,8 @@ group :development, :test do
   gem 'rspec_junit_formatter'
   gem 'shoulda-matchers'
   gem 'simplecov'
+  gem 'vcr'
+  gem 'webmock'
 end
 
 group :development do

@@ -12,13 +12,15 @@ describe 'pixabay service' do
   end
 
   it 'can get an image' do
-    location = 'San Francisco,ca'
-    pic_service = PixabayService.new
+    VCR.use_cassette('pixabay_picture') do
+      location = 'San Francisco,ca'
+      pic_service = PixabayService.new
 
-    results = pic_service.city_image(location)
+      results = pic_service.city_image(location)
 
-    expect(results).to be_a Hash
-    expect(results).to have_key(:totalHits)
-    expect(results).to have_key(:hits)
+      expect(results).to be_a Hash
+      expect(results).to have_key(:totalHits)
+      expect(results).to have_key(:hits)
+    end
   end
 end
