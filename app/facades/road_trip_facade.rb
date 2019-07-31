@@ -2,7 +2,6 @@
 
 # facade for road trip
 class RoadTripFacade
-
   def initialize(start, ending)
     @start = start
     @ending = ending
@@ -26,5 +25,4 @@ class RoadTripFacade
   def geocode_service
     GoogleGeocodeService.new
   end
-
 end

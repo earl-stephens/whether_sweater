@@ -9,7 +9,7 @@ class PixabayService
   end
 
   def city_image(location)
-    Rails.cache.fetch("#{location}", :expires_in => 60.minutes) do
+    Rails.cache.fetch("#{location}", expires_in: 60.minutes) do
       city = edited_location(location)
       response = conn.get("/api/?key=#{ENV['PIXABAY_KEY']}&q=#{city}&tags=city")
       JSON.parse(response.body, symbolize_names: true)

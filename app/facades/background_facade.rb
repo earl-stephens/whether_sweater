@@ -2,7 +2,6 @@
 
 # facade for backgrounds
 class BackgroundFacade
-
   def initialize(location)
     @location = location
   end
@@ -20,5 +19,4 @@ class BackgroundFacade
   def service_data
     @_service_data ||= service.city_image(@location)
   end
-
 end

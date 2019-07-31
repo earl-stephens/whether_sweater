@@ -9,7 +9,7 @@ class GoogleGeocodeService
   end
 
   def find_coords(location)
-    Rails.cache.fetch("#{location}", :expires_in => 15.minutes) do
+    Rails.cache.fetch("#{location}", expires_in: 15.minutes) do
       formatted_address = format_address(location)
       response = conn.get('/maps/api/geocode/'\
         "json?key=#{ENV['GOOGLE_API_KEY']}&address=#{formatted_address}")
@@ -18,9 +18,10 @@ class GoogleGeocodeService
   end
 
   def get_time(start, ending)
-    Rails.cache.fetch("#{start},#{ending}", :expires_in => 15.minutes) do
+    Rails.cache.fetch("#{start},#{ending}", expires_in: 15.minutes) do
       response = conn.get('/maps/api/directions/'\
-        "json?origin=#{start}&destination=#{ending}&key=#{ENV['GOOGLE_API_KEY']}")
+        "json?origin=#{start}&destination=#{ending}"\
+        "&key=#{ENV['GOOGLE_API_KEY']}")
       results = JSON.parse(response.body, symbolize_names: true)
       results[:routes][0][:legs][0][:duration][:value]
     end
